@@ -12,3 +12,5 @@ antigen bundles <<EOBUNDLES
     Lokaltog/powerline powerline/bindings/zsh
 EOBUNDLES
 antigen apply
+
+alias pacman="sudo pacman -Sy && sudo pacman "
