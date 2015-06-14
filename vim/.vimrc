@@ -20,8 +20,13 @@ call vundle#begin()
 
   "NERDTree
   Plugin 'scrooloose/nerdtree'
-  "NERDTree icons
   Plugin 'ryanoasis/vim-webdevicons'
+  Plugin 'Xuyuanp/nerdtree-git-plugin'
+
+  "GIT
+  Plugin 'tpope/vim-fugitive'
+  Plugin 'tpope/vim-git'
+  Plugin 'airblade/vim-gitgutter'
 call vundle#end()            " required
 filetype plugin indent on    " required
 

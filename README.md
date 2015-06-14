@@ -18,6 +18,7 @@
   * solarizer scheme
   * powerline
   * taskwarrior mode
+  * nerd tree with git
 
 ## Require
 * powerline
