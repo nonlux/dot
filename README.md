@@ -3,14 +3,16 @@
 
 ## Included 
 
-* zsh config
+* zsh 
   * oh_my_zsh plugins : git, vi-mode
   * powerline prompt
-* tmux config
+* tmux
   * powerline prompt
-* git config
+* git 
   * personal data
-
+  * gnome-keyring
+* xinit
+  * autostart gnome keyring
 
 ## Require
 * powerline
