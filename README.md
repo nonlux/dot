@@ -4,6 +4,7 @@
 ## Included 
 
 * zsh config
+* tmux config
 
 
 ## Require
