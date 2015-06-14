@@ -17,6 +17,8 @@
   * vunble
   * solarizer scheme
   * powerline
+  * taskwarrior mode
 
 ## Require
 * powerline
+* taskwarrior

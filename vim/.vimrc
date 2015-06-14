@@ -12,9 +12,13 @@ call vundle#begin()
 
   "Powerline
   Plugin 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
+
+  "Taskwarrior
+  Plugin 'farseer90718/vim-taskwarrior'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
+"GUI
 "Show syntax
 syntax on
 " Show relative number column
@@ -25,6 +29,5 @@ set background=dark
 colorscheme solarized
 set cursorline
 set colorcolumn=80
-
 " Always show statusline
 set laststatus=2
