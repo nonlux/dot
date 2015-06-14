@@ -15,19 +15,41 @@ call vundle#begin()
 
   "Taskwarrior
   Plugin 'farseer90718/vim-taskwarrior'
+
+  "NERDTree
+  Plugin 'scrooloose/nerdtree'
+  "NERDTree icons
+  Plugin 'ryanoasis/vim-webdevicons'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
 "GUI
-"Show syntax
-syntax on
-" Show relative number column
-set relativenumber
-"Set color scheme 
-set  t_Co=256
-set background=dark
-colorscheme solarized
-set cursorline
-set colorcolumn=80
-" Always show statusline
-set laststatus=2
+  "Show syntax
+  syntax on
+  "Show relative number column
+  set relativenumber
+  "Set color scheme 
+  set  t_Co=256
+  set background=dark
+  colorscheme solarized
+  "select current line
+  set cursorline
+  set colorcolumn=80
+  "Always show statusline
+  set laststatus=2
+  " this enables "visual" wrapping
+  set wrap
+  " this turns off physical line wrapping (ie: automatic insertion of newlines)
+  set textwidth=0 wrapmargin=0
+
+
+"NERDTree
+  "Tree should show if file not specifed 
+  autocmd StdinReadPre * let s:std_in=1
+  autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+  "Default mapping
+  map <C-n> :NERDTreeToggle<CR>
+  "Close vim if only NERDTree
+  autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+
+
