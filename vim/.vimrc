@@ -1,3 +1,5 @@
+source ~/.vim/airline.vim
+
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
@@ -52,4 +54,5 @@ filetype plugin indent on    " required
   "Close vim if only NERDTree
   autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
+  set guifont=Monofur\ for\ Powerline\ Plus\ Nerd\ File\ Types\ 11
 
