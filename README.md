@@ -13,6 +13,10 @@
   * gnome-keyring
 * xinit
   * autostart gnome keyring
+* vim
+  * vunble
+  * solarizer scheme
+  * powerline
 
 ## Require
 * powerline
