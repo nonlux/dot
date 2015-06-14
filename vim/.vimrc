@@ -52,8 +52,8 @@ filetype plugin indent on    " required
   " this turns off physical line wrapping (ie: automatic insertion of newlines)
   set textwidth=0 wrapmargin=0
   set hidden
-  nnoremap <F8> :bnext<CR>
-  nnoremap <F7> :bprev<CR>
+  nnoremap <F7> :bnext<CR>
+  nnoremap <F8> :bprev<CR>
 
 
 "NERDTree
