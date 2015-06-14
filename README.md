@@ -19,6 +19,7 @@
   * powerline
   * taskwarrior mode
   * nerd tree with git
+  * tabline
 
 ## Require
 * powerline

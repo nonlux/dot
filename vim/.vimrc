@@ -27,6 +27,9 @@ call vundle#begin()
   Plugin 'tpope/vim-fugitive'
   Plugin 'tpope/vim-git'
   Plugin 'airblade/vim-gitgutter'
+
+  "Tabline
+  Plugin 'ap/vim-buftabline'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
@@ -48,6 +51,9 @@ filetype plugin indent on    " required
   set wrap
   " this turns off physical line wrapping (ie: automatic insertion of newlines)
   set textwidth=0 wrapmargin=0
+  set hidden
+  nnoremap <F8> :bnext<CR>
+  nnoremap <F7> :bprev<CR>
 
 
 "NERDTree
