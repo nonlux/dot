@@ -67,3 +67,5 @@ filetype plugin indent on    " required
 
   set guifont=Monofur\ for\ Powerline\ Plus\ Nerd\ File\ Types\ 11
 
+" update file when changed 
+set autoread

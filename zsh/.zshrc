@@ -14,4 +14,15 @@ antigen bundles <<EOBUNDLES
 EOBUNDLES
 antigen apply
 
+
+# COMPLETION SETTINGS
+# add custom completion scripts
+fpath=($ZSH_ROOT/completion $fpath) 
+  
+# compsys initialization
+autoload -U compinit
+compinit
+
+# system aliases
 alias pacman="sudo pacman -Sy && sudo pacman "
+

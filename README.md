@@ -4,8 +4,12 @@
 ## Included 
 
 * zsh 
-  * oh_my_zsh plugins : git, vi-mode
+  * oh_my_zsh plugins:
+    * git
+    * vi-mode
+    * composer-completion
   * powerline prompt
+  * completion for symfony
 * tmux
   * powerline prompt
 * git 
@@ -20,6 +24,7 @@
   * taskwarrior mode
   * nerd tree with git
   * tabline
+  * reload local changes for file
 
 ## Require
 * powerline
