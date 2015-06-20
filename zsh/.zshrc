@@ -25,4 +25,5 @@ compinit
 
 # system aliases
 alias pacman="sudo pacman -Sy && sudo pacman "
-
+# hub as git
+eval "$(hub alias -s)"

@@ -29,3 +29,4 @@
 ## Require
 * powerline
 * taskwarrior
+* hub
