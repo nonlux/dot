@@ -66,6 +66,7 @@ filetype plugin indent on    " required
   autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
   set guifont=Monofur\ for\ Powerline\ Plus\ Nerd\ File\ Types\ 11
+  let NERDTreeIgnore =['\.swp','\.git$']
 
 " update file when changed 
 set autoread
