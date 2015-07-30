@@ -30,3 +30,9 @@
 * powerline
 * taskwarrior
 * hub
+
+##Thanks
+
+* https://github.com/skwp/dotfiles  
+* https://github.com/humiaozuzu/dot-vimrc
+
