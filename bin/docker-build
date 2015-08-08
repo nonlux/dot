@@ -2,8 +2,8 @@
 sudo pwd
 echo "Build nonlux/$1:latest image"
 echo "Stop all containers"
-docker stop $(docker ps -a -q) >> /dev/null
-docker rm $(docker ps -a -q) >> /dev/null
+#docker stop $(docker ps -a -q) >> /dev/null
+#docker rm $(docker ps -a -q) >> /dev/null
 docker rmi  -f nonlux/$1:latest
 set -e
 cd  "/home/nonlux/src/docker/$1"

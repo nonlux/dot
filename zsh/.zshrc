@@ -1,5 +1,5 @@
 # ZSH variables
-export ZSH_ROOT="s$HOME/src/dot/zsh"
+export ZSH_ROOT="$HOME/src/dot/zsh"
 export ZSH_VENDOR="$ZSH_ROOT/vendor"
 export PATH="$HOME/src/dot/bin:$HOME/.gem/ruby/2.2.0/bin:$HOME/bin:$PATH"
 
@@ -49,7 +49,6 @@ source <(app/console  _completion --generate-hook) &&\
 cd /home/nonlux
 cd $__PWD
 }
-_sfconsole cgp 
 export EDITOR="vim"
 export GOPATH=$HOME
 
@@ -58,7 +57,7 @@ export GOPATH=$HOME
 export ZSH_INIT=1
 
   
-alias docker-compose="docker run -v \"\$(pwd)\":/app -v /var/run/docker.sock:/var/run/docker.sock -e COMPOSE_PROJECT_NAME=\$(basename \"\$(pwd)\") -ti --rm dduportal/docker-compose:latest"
+alias docker-compose="docker run -v \"\$(pwd)\":/app  -v \"\$(pwd):\$(pwd)\" -w \"\$(pwd)\" -v /var/run/docker.sock:/var/run/docker.sock -e COMPOSE_PROJECT_NAME=\$(basename \"\$(pwd)\") -ti --rm dduportal/docker-compose:latest"
 alias dip="docker inspect --format '{{ .NetworkSettings.IPAddress }}'" 
 function drun() {
 docker run -ti $1 /bin/bash
