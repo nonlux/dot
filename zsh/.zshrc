@@ -65,3 +65,4 @@ docker run -ti $1 /bin/bash
 function dent() {
 docker exec -ti $1 /bin/bash
 }
+alias tmux="TERM=screen-256color-bce tmux"

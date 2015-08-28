@@ -29,6 +29,8 @@ set hidden
 
 set backspace=indent,eol,start  "Allow backspace in insert mode
 
+set splitright                  " Puts new vsplit windows to the right of the current
+
 
 " Show matching brackets when text indicator is over them
 set showmatch
@@ -54,3 +56,5 @@ nnoremap <F8> :bnext<CR>
 nnoremap <F7> :bprev<CR>
 nnoremap <F9> :bdel<CR>
 
+set list
+set listchars=tab:›\ ,trail:•,extends:#,nbsp:. " Highlight problematic whitespace

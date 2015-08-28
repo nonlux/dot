@@ -29,4 +29,3 @@ set-window-option -g window-status-bell-attr none
 set-window-option -g window-status-activity-fg yellow
 set-window-option -g window-status-bell-fg red
 
-# vim: ft=tmux

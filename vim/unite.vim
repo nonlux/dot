@@ -3,4 +3,4 @@ let g:unite_source_history_yank_enable = 1
 nnoremap <leader>y :<C-u>Unite history/yank<CR>
 
 nnoremap <silent> <leader>b :<C-u>Unite buffer bookmark<CR>
-nnoremap <space>/ :Unite grep:.<cr>
+nnoremap <space>/ :Unite grep:.<CR>
