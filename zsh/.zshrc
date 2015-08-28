@@ -11,8 +11,8 @@ antigen bundles <<EOBUNDLES
     git
     composer
     bower
-    Lokaltog/powerline powerline/bindings/zsh
 EOBUNDLES
+antigen theme agnoster
 antigen apply
 
 
