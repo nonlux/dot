@@ -21,6 +21,10 @@ set nojoinspaces                " Prevents inserting two spaces after punctuatio
 
 "update file when changed
 set autoread
+set updatetime=250                " Do things when I stop typing for three-quarters of a second.
+
+set notimeout                     " Don't time out partially entered mapped key sequences.
+set ttimeout                      " But do time out key codes.
 
 set tags=tags;./tags
 
@@ -52,4 +56,6 @@ inoremap <Right> <NOP>
 noremap <Up> <NOP>
 noremap <Down> <NOP>
 noremap <Left> <NOP>
-noremap <Right> <NOP>
+nnoremap P o<Esc>p<CR>
+nnoremap L o<Esc><CR>
+nnoremap <silent> <leader>w ddp<CR>

@@ -37,7 +37,11 @@ set showmatch
 " How many tenths of a second to blink when matching brackets
 set mat=2
 
-" Add a bit extra margin to the left
+
+set foldmethod=syntax   "fold based on indent
+set foldnestmax=10      "deepest fold is 10 levels
+set foldlevel=1
+"i use Add a bit extra margin to the left
 set foldcolumn=1
 
 " set git  gutter
@@ -51,15 +55,32 @@ autocmd FileType help execute 'set relativenumber'
 highlight Folded guibg=grey guifg=blue
 highlight FoldColumn guibg=darkgrey guifg=white
 
-set scrolloff=3                 " Minimum lines to keep above and below cursor
+set scrolloff=5                 " Minimum lines to keep above and below cursor
 set scrolljump=5                " Lines to scroll when cursor leaves screen
 
 set previewheight=40
+
+set list
+set listchars=tab:›\ ,trail:•,extends:#,nbsp:. " Highlight problematic whitespace
+if &termencoding ==# 'utf-8' || &encoding ==# 'utf-8'
+  let &listchars = "tab:\u21e5 ,trail:\u2423,extends:\u21c9,precedes:\u21c7,nbsp:\u26ad"
+endif
+
+autocmd BufEnter * syn match ErrorMsg /[^\x00-\x7F]/
+au BufEnter *.js syn match ErrorMsg /console.log/
+au Filetype coffee syn match ErrorMsg /console.log/
+
+" highlight values in terminal vim, colorscheme solarized
+hi User1                      ctermfg=4          guifg=#40ffff            " Identifier
+hi User2                      ctermfg=2 gui=bold guifg=#ffff60            " Statement
+hi User3 term=bold cterm=bold ctermfg=1          guifg=White   guibg=Red  " Error
+hi User4                      ctermfg=1          guifg=Orange             " Special
+hi User5                      ctermfg=10         guifg=#80a0ff            " Comment
+hi User6 term=bold cterm=bold ctermfg=1          guifg=Red                " WarningMsg
 
 "buffer manage
 nnoremap <F8> :bnext<CR>
 nnoremap <F7> :bprev<CR>
 nnoremap <F9> :bdel<CR>
+nnoremap <silent> <leader>v :<C-u>vsplit<CR>
 
-set list
-set listchars=tab:›\ ,trail:•,extends:#,nbsp:. " Highlight problematic whitespace

@@ -79,6 +79,7 @@ call vundle#begin()
 
   "other
   Plugin 'tpope/vim-markdown'
+  Plugin 'vim-scripts/nginx.vim'
   Plugin 'chase/vim-ansible-yaml'
   "Plugin 'mileszs/ack.vim'
   "Plugin 'terryma/vim-multiple-cursors'
