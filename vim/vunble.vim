@@ -52,6 +52,8 @@ call vundle#begin()
   "PHP
   Plugin 'nishigori/vim-php-dictionary'
   Plugin 'StanAngeloff/php.vim'
+  Plugin 'spf13/PIV'
+  Plugin 'arnaud-lb/vim-php-namespace'
 
   "CSS+LESS
   Plugin 'groenewege/vim-less'
@@ -66,6 +68,8 @@ call vundle#begin()
   "JS
   Plugin 'pangloss/vim-javascript'
   Plugin 'elzr/vim-json'
+  Plugin 'briancollins/vim-jst'
+  Plugin 'kchmck/vim-coffee-script'
 
   "syntax
   Plugin 'scrooloose/syntastic'
@@ -74,12 +78,18 @@ call vundle#begin()
   Plugin 'evidens/vim-twig'
 
   "other
+  Plugin 'tpope/vim-markdown'
   Plugin 'chase/vim-ansible-yaml'
   "Plugin 'mileszs/ack.vim'
   "Plugin 'terryma/vim-multiple-cursors'
 
-  "in file navigation
+  "Text5 edit
+  Plugin 'tpope/vim-surround'
+  Plugin 'tpope/vim-repeat'
+  Plugin 'jiangmiao/auto-pairs'
+  Plugin 'osyo-manga/vim-over'
   Plugin 'matchit.zip' "navigate from tags  whit %
+  Plugin 'kana/vim-textobj-user'
 
   "Taskwarrior
   "Plugin 'farseer90718/vim-taskwarrior'

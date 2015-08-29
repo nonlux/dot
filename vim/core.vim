@@ -29,6 +29,17 @@ set pastetoggle=<F4>
 
 set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/app/cache/*
 
+set iskeyword-=.                    " '.' is an end of word designator
+set iskeyword-=#                    " '#' is an end of word designator
+set iskeyword-=-                    " '-' is an end of word designator
+
+set wildmode=list:longest,full
+
+" Shortcuts
+" Change Working Directory to that of the current file
+cmap cwd lcd %:p:h
+cmap cd. lcd %:p:h
+
 :command W w
 :command Q q
 :command Wq wq

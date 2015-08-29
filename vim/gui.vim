@@ -51,6 +51,11 @@ autocmd FileType help execute 'set relativenumber'
 highlight Folded guibg=grey guifg=blue
 highlight FoldColumn guibg=darkgrey guifg=white
 
+set scrolloff=3                 " Minimum lines to keep above and below cursor
+set scrolljump=5                " Lines to scroll when cursor leaves screen
+
+set previewheight=40
+
 "buffer manage
 nnoremap <F8> :bnext<CR>
 nnoremap <F7> :bprev<CR>
