@@ -35,6 +35,8 @@ set iskeyword-=-                    " '-' is an end of word designator
 
 set wildmode=list:longest,full
 
+set clipboard=unnamed,unnamedplus
+
 " Shortcuts
 " Change Working Directory to that of the current file
 cmap cwd lcd %:p:h
