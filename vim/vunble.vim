@@ -21,7 +21,7 @@ call vundle#begin()
   Plugin 'scrooloose/nerdtree'
   Plugin 'ryanoasis/vim-webdevicons'
   Plugin 'Xuyuanp/nerdtree-git-plugin'
-  "Plugin 'kien/ctrlp.vim'
+  Plugin 'kien/ctrlp.vim'
   Plugin 'Shougo/unite.vim'
   Plugin 'kana/vim-altr'
 

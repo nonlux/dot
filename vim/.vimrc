@@ -11,7 +11,7 @@ source ~/src/dot/vim/experiments.vim
 source ~/src/dot/vim/phpcomplite.vim
 source ~/src/dot/vim/syntastic.vim
 source ~/src/dot/vim/airline.vim
-"source ~/src/dot/vim/ctrlp.vim
+source ~/src/dot/vim/ctrlp.vim
 source ~/src/dot/vim/youcompliteme.vim
 source ~/src/dot/vim/ultisnips.vim
 source ~/src/dot/vim/unite.vim
