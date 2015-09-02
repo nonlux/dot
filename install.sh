@@ -23,16 +23,31 @@ fi
 
 vim +PluginInstall +qall
 
-cd ~/.vim/bundle/vimproc.vim/
-make
-cd $OLDPWD
-## ADD You complite me
+if [ -f ~/.vim/proc ]
+then
+  echo "vimproc already build"
+else
+  cd ~/.vim/bundle/vimproc.vim/
+  make
+  cd $OLDPWD
+  touch  ~/.vim/proc
+fi
+
+if [ -f ~/.vim/ycm ]
+then
+  echo "YouCompliteMe already build"
+else
+  cd ~/.vim/bundle/YouCompleteMe
+  ./install.py --clang-completer
+  cd $OLDPWD
+  touch  ~/.vim/ycm
+fi
 
 if [ -d ~/.vim/UltiSnips ]
 then
-  echo "Snips for vim exists "
+  echo "Snips for vim exists"
 else
-  ln "$DOT_PWD/vim/spins" ~/.vim/UltiSnips -s
+  ln "$DOT_PWD/vim/snips" ~/.vim/UltiSnips -s
 fi
 
 echo "Done"
@@ -69,6 +84,7 @@ else
   git clone git@github.com:zsh-users/antigen.git $DOT_PWD/zsh/vendor/antigen
 fi
 go get github.com/github/hub
+$DOT_PWD/bin/install_zsh
 echo "Done"
 
 #############################################################3
