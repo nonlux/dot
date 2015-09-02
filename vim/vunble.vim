@@ -77,7 +77,7 @@ call vundle#begin()
   "TWIG
   Plugin 'evidens/vim-twig'
 
-  "other
+  "other file types
   Plugin 'tpope/vim-markdown'
   Plugin 'vim-scripts/nginx.vim'
   Plugin 'chase/vim-ansible-yaml'
@@ -91,6 +91,8 @@ call vundle#begin()
   Plugin 'osyo-manga/vim-over'
   Plugin 'matchit.zip' "navigate from tags  whit %
   Plugin 'kana/vim-textobj-user'
+  Plugin 'wellle/targets.vim'
+  Plugin 'KabbAmine/zeavim.vim'
 
   "Taskwarrior
   "Plugin 'farseer90718/vim-taskwarrior'

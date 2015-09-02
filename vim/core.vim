@@ -41,10 +41,20 @@ set wildmode=list:longest,full
 
 set clipboard=unnamed,unnamedplus
 
+let g:user_name = "nonlux"
+let g:user_email = "nonluxi@gmail.com"
+
 " Shortcuts
 " Change Working Directory to that of the current file
 cmap cwd lcd %:p:h
 cmap cd. lcd %:p:h
+
+" Russian keyboard
+set iskeyword=@,48-57,_,192-255
+set keymap=russian-jcukenwin
+if has('multi_byte')
+  set iminsert=0 imsearch=0
+endif
 
 :command W w
 :command Q q
@@ -59,3 +69,4 @@ noremap <Left> <NOP>
 nnoremap P o<Esc>p<CR>
 nnoremap L o<Esc><CR>
 nnoremap <silent> <leader>w ddp<CR>
+nnoremap <silent> <leader>' 0f'ldi'u<CR>
