@@ -68,11 +68,11 @@ then
 else
   git clone git@github.com:zsh-users/antigen.git $DOT_PWD/zsh/vendor/antigen
 fi
+go get github.com/github/hub
 echo "Done"
 
-go get github.com/github/hub
 #############################################################3
-echo "copy fonts"
+echo "Copy fonts"
 if [ -d ~/.fonts ]
 then
   echo ""
@@ -80,3 +80,14 @@ else
   mkdir ~/.fonts
 fi
 cp $DOT_PWD/fonts/* ~/.fonts
+echo "Done"
+
+###################################################3
+echo "Config git"
+if [ -f ~/.gitconfig ]
+then
+  echo "Warning git config already exists"
+else
+  ln $DOT_PWD/git/.gitconfig  ~/
+fi
+echo "Done"
