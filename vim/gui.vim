@@ -37,12 +37,12 @@ set showmatch
 " How many tenths of a second to blink when matching brackets
 set mat=2
 
-
-set foldmethod=syntax   "fold based on indent
-set foldnestmax=10      "deepest fold is 10 levels
-set foldlevel=1
+set nofoldenable    " disable folding
+"set foldmethod=syntax   "fold based on indent
+"set foldnestmax=10      "deepest fold is 10 levels
+"set foldlevel=1
 "i use Add a bit extra margin to the left
-set foldcolumn=1
+"set foldcolumn=1
 
 " set git  gutter
 autocmd BufEnter * sign define dummy
@@ -66,8 +66,9 @@ if &termencoding ==# 'utf-8' || &encoding ==# 'utf-8'
   let &listchars = "tab:\u21e5 ,trail:\u2423,extends:\u21c9,precedes:\u21c7,nbsp:\u26ad"
 endif
 
-autocmd BufEnter * syn match ErrorMsg /[^\x00-\x7F]/
+"autocmd BufEnter * syn match ErrorMsg /[^\x00-\x7F]/
 au BufEnter *.js syn match ErrorMsg /console.log/
+au BufEnter *.php syn match ErrorMsg /var_dump/
 au Filetype coffee syn match ErrorMsg /console.log/
 
 " highlight values in terminal vim, colorscheme solarized
@@ -84,3 +85,4 @@ nnoremap <F7> :bprev<CR>
 nnoremap <F9> :bdel<CR>
 nnoremap <silent> <leader>v :<C-u>vsplit<CR>
 
+let g:vim_markdown_folding_disabled=1

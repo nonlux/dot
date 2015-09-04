@@ -46,7 +46,7 @@ call vundle#begin()
   Plugin 'honza/vim-snippets'
   "Plugin 'Shougo/neocomplete.vim'
   Plugin 'shawncplus/phpcomplete.vim'
-  Plugin 'm2mdas/phpcomplete-extended'
+  Plugin 'nonlux/phpcomplete-extended'
   Plugin 'm2mdas/phpcomplete-extended-symfony'
 
   "PHP
@@ -54,10 +54,11 @@ call vundle#begin()
   Plugin 'StanAngeloff/php.vim'
   Plugin 'spf13/PIV'
   Plugin 'arnaud-lb/vim-php-namespace'
+  Plugin 'Herzult/phpspec-vim'
 
   "CSS+LESS
   Plugin 'groenewege/vim-less'
-  Plugin 'skammer/vim-css-color'
+  "Plugin 'skammer/vim-css-color'
   Plugin 'hail2u/vim-css3-syntax'
 
   "HTML

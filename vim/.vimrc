@@ -17,3 +17,5 @@ source ~/src/dot/vim/ultisnips.vim
 source ~/src/dot/vim/unite.vim
 source ~/src/dot/vim/auto-pairs.vim
 source ~/src/dot/vim/php-namspace.vim
+source ~/src/dot/vim/phpspec.vim
+source ~/src/dot/vim/fugitive.vim

@@ -2,7 +2,7 @@
 	email = nonluxi@gmail.com
 	name = nonlux
 [push]
-	default = simple
+	default = upstream
 [credential]
 	helper = /usr/lib/git-core/git-credential-gnome-keyring
 [diff]

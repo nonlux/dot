@@ -70,3 +70,5 @@ nnoremap P o<Esc>p<CR>
 nnoremap L o<Esc><CR>
 nnoremap <silent> <leader>w ddp<CR>
 nnoremap <silent> <leader>' 0f'ldi'u<CR>
+nnoremap <silent> <leader>g Go<CR>
+
