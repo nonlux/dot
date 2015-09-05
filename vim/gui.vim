@@ -52,8 +52,8 @@ autocmd FileType help wincmd L
 autocmd FileType help execute 'set relativenumber'
 
 "fold highlight
-highlight Folded guibg=grey guifg=blue
-highlight FoldColumn guibg=darkgrey guifg=white
+"highlight Folded guibg=grey guifg=blue
+"highlight FoldColumn guibg=darkgrey guifg=white
 
 set scrolloff=5                 " Minimum lines to keep above and below cursor
 set scrolljump=5                " Lines to scroll when cursor leaves screen

@@ -19,3 +19,4 @@ source ~/src/dot/vim/auto-pairs.vim
 source ~/src/dot/vim/php-namspace.vim
 source ~/src/dot/vim/phpspec.vim
 source ~/src/dot/vim/fugitive.vim
+source ~/src/dot/vim/piv.vim
