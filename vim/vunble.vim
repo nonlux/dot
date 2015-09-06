@@ -24,6 +24,7 @@ call vundle#begin()
   Plugin 'kien/ctrlp.vim'
   Plugin 'Shougo/unite.vim'
   Plugin 'kana/vim-altr'
+  Plugin 'BufOnly.vim'
 
   "GIT
   Plugin 'tpope/vim-fugitive'
