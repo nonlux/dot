@@ -1,0 +1,8 @@
+#!/bin/bash
+
+current=$(git symbolic-ref --short -q HEAD)
+
+base=$1
+
+git checkout -f $base
+git merge $current

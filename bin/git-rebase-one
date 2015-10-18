@@ -1,0 +1,20 @@
+#!/bin/bash
+set -e
+base=$1
+commit=$2
+count=1
+if [ $3 ]
+then
+  count=$3
+fi
+
+echo rebased commit $commit
+
+git clean -fd
+git checkout $commit
+branch="br_$(date +%s)"
+git checkout -b $branch
+git rebase --onto $base "$branch~$count" $branch
+git checkout $base
+git merge $branch
+git branch -d $branch

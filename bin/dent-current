@@ -1,0 +1,7 @@
+#!/bin/bash
+dirr=${PWD##*/}
+b=""
+dir="${dirr/-/$b}"
+container="${dir}_$1_1"
+echo "Attach container $container"
+docker exec -ti $container /bin/bash

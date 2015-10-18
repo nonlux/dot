@@ -47,7 +47,7 @@ call vundle#begin()
   Plugin 'honza/vim-snippets'
   "Plugin 'Shougo/neocomplete.vim'
   Plugin 'shawncplus/phpcomplete.vim'
-  Plugin 'nonlux/phpcomplete-extended'
+  "Plugin 'nonlux/phpcomplete-extended'
   Plugin 'm2mdas/phpcomplete-extended-symfony'
 
   "PHP
