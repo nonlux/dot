@@ -1,4 +1,4 @@
- ZSH variables
+# ZSH variables
 export ZSH_ROOT="$HOME/src/dot/zsh"
 export ZSH_VENDOR="$ZSH_ROOT/vendor"
 export PATH="$HOME/src/dot/bin:$HOME/.gem/ruby/2.2.0/bin:$HOME/bin:$PATH"
@@ -71,12 +71,12 @@ function dent() {
 docker exec -ti $1 /bin/bash
 }
 
-# tmux
-alias tmux="TERM=screen-256color-bce tmux"
 
 #auto start xorg
 if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
 startx
 fi
 
+#ansible
+alias ansl="ansible-playbook -c local -i ./hosts "
 
