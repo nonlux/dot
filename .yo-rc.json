@@ -1,0 +1,12 @@
+{
+  "generator-prj": {
+    "projectName": "dot",
+    "isGithub": true,
+    "description": "my dot config",
+    "projectType": "shell",
+    "shortName": "dot",
+    "isBabel": false,
+    "isEslint": false,
+    "isWebpack": false
+  }
+}
