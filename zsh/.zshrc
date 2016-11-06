@@ -12,6 +12,9 @@ antigen use oh-my-zsh
 antigen bundles <<EOBUNDLES
     git
     extract
+    zsh-users/zsh-syntax-highlighting
+    zsh-users/zsh-completions
+    zsh-users/zsh-autosuggestions
 EOBUNDLES
 antigen theme agnoster
 antigen apply
