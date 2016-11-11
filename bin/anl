@@ -1,0 +1,11 @@
+#!/bin/sh
+export ROLE=$1;
+echo "---
+- hosts: dev
+  become_method: sudo
+  roles:
+  - $ROLE
+" > .tml.yml
+
+ansible-playbook -c local -i hosts  .tml.yml
+rm .tml.yml

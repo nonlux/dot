@@ -28,6 +28,7 @@ antigen bundles <<EOBUNDLES
     extract
     git
     git-extras
+    jira
 EOBUNDLES
 antigen theme agnoster
 antigen apply
@@ -99,3 +100,11 @@ alias ansl="ansible-playbook -c local -i ./hosts "
 #emacs
 alias emacs="emacs -nw"
 alias emacsi="EMACS_INSTALL=1 emacs -nw"
+
+function yp() { 
+if ! [ $1 ]; then
+    yo prj
+else
+    yo prj:$@
+fi
+}
