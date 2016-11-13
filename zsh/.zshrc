@@ -1,7 +1,7 @@
 # ZSH variables
 export ZSH_ROOT="$HOME/src/dot/zsh"
 export ZSH_VENDOR="$ZSH_ROOT/vendor"
-export PATH="$HOME/src/dot/bin:$HOME/.gem/ruby/2.2.0/bin:$HOME/.gem/ruby/2.3.0/bin:$HOME/bin:$PATH"
+export PATH="$HOME/.npm-global/bin:$HOME/src/dot/bin:$HOME/.gem/ruby/2.2.0/bin:$HOME/.gem/ruby/2.3.0/bin:$HOME/bin:$PATH"
 
 #alias compinit="echo  compinit"
 #
@@ -65,6 +65,7 @@ alias gcf="git checkout -- "
 alias grh="git reset HEAD "
 alias gcb="git checkout -b"
 alias gu="git rm --cached -r "
+alias gpo="git pull -u origin master"
 
 #tmux
 alias tmux="TERM=screen-256color-bce tmux"
