@@ -61,6 +61,7 @@ cd $1
 }
 
 
+alias src_status="cd ~/src && find . -mindepth 1 -maxdepth 1 -type d | xargs -n 1 enter_and_status"
 # hub as git
 eval "$(hub alias -s)"
 

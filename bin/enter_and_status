@@ -1,4 +1,4 @@
-    echo $1
+    echo "project: $1"
     cd $1
     git status -s
     cd ..
