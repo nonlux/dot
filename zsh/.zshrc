@@ -55,6 +55,12 @@ alias pacman="sudo pacman -Sy && sudo pacman "
 alias ssh-pub-key="cat $HOME/.ssh/id_rsa.pub"
 alias ccat='colorize_via_pygmentize'
 
+function commit_and_exit() {
+cd $1
+(gst  && ga . && gc -m "fast commit" && gp) || echo "foo" && cd .. && ls -l
+}
+
+
 # hub as git
 eval "$(hub alias -s)"
 

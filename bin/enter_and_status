@@ -1,0 +1,4 @@
+    echo $1
+    cd $1
+    git status -s
+    cd ..
