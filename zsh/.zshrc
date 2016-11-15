@@ -72,9 +72,12 @@ alias tmux="TERM=screen-256color-bce tmux"
 alias tmx="tmuxinator"
 alias tmn="tmuxinator new"
 
-function tmk() {
+function tmks() {
  tmux kill-session
 }
+
+alias tmk="tmux display-message -p '#S' | xargs tmuxinator stop"
+
 
 #docker
 #alias docker-compose="docker run -v \"\$(pwd)\":/app  -v \"\$(pwd):\$(pwd)\" -w \"\$(pwd)\" -v /var/run/docker.sock:/var/run/docker.sock -e COMPOSE_PROJECT_NAME=\$(basename \"\$(pwd)\") -ti --rm dduportal/docker-compose:latest"
@@ -109,3 +112,16 @@ else
     yo prj:$@
 fi
 }
+
+function npm-proxy-on() {
+npm config set proxy http://localhost:8080/ 
+npm config set https-proxy http://localhost:8080/ 
+npm config set strict-ssl false
+}
+function npm-proxy-off() {
+npm config rm proxy
+npm config rm https-proxy
+npm config set strict-ssl true
+}
+
+alias npmp="npm-proxy-off && npm publish && npm-proxy-on"
