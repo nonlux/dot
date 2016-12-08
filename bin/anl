@@ -7,5 +7,5 @@ echo "---
   - $ROLE
 " > .tml.yml
 
-ansible-playbook -c local -i hosts  .tml.yml
+ansible-playbook -c local -i hosts  .tml.yml -K
 rm .tml.yml
