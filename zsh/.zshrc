@@ -112,6 +112,7 @@ alias ansl="ansible-playbook -c local -i ./hosts "
 alias emacs="emacs -nw"
 alias emacsi="EMACS_INSTALL=1 emacs -nw"
 
+
 function yp() { 
 if ! [ $1 ]; then
     yo prj
@@ -132,3 +133,5 @@ npm config set strict-ssl true
 }
 
 alias npmp="npm-proxy-off && npm publish && npm-proxy-on"
+
+unalias gm
