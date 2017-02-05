@@ -1,7 +1,7 @@
 # ZSH variables
 export ZSH_ROOT="$HOME/src/dot/zsh"
 export ZSH_VENDOR="$ZSH_ROOT/vendor"
-export PATH="$HOME/.npm-global/bin:$HOME/src/dot/bin:$HOME/.gem/ruby/2.2.0/bin:$HOME/.gem/ruby/2.3.0/bin:$HOME/bin:$PATH"
+export PATH="$HOME/.local/bin:$HOME/.npm-global/bin:$HOME/src/dot/bin:$HOME/.gem/ruby/2.2.0/bin:$HOME/.gem/ruby/2.3.0/bin:$HOME/bin:$PATH"
 
 #alias compinit="echo  compinit"
 #
