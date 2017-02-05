@@ -8,11 +8,13 @@ docker rmi  -f nonlux/$1:latest
 set -e
 #cd  "/home/nonlux/src/docker/$1"
 
-cd  "$HOME/src/ansible/docker/$1"
-docker build -t nonlux/$1:big .
+cd  "$HOME/src/"
+echo $PWD
+docker build -t nonlux/$1:big -f ansible/docker/$1/Dockerfile .
 echo "Flatten"
 ID=$(docker inspect  --format '{{ .Id }}' nonlux/$1:big)
-docker save $ID |sudo /home/nonlux/src/dot/bin/docker-squash -t nonlux/$1:latest | docker load
+docker save $ID | sudo /home/nonlux/src/dot/bin/docker-squash -t="nonlux/$1:latest" | docker load
+docker images
 #docker push nonlux/$1:latest
 echo "Done"
 

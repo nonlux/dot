@@ -1,34 +1,4 @@
 #!/bin/bash
-sudo pwd
-echo "Build nonlux/$1:latest image"
-echo "Stop all containers"
-docker stop $(docker ps -a -q) >> /dev/null
-docker rm $(docker ps -a -q) >> /dev/null
-docker rmi  -f nonlux/$1:latest
-set -e
-#cd  "/home/nonlux/src/docker/$1"
-
-cd  "$HOME/src/docker/$1"
-docker build -t nonlux/$1:big .
-echo "Flatten"
-ID=$(docker inspect  --format '{{ .Id }}' nonlux/$1:big)
-docker save $ID |sudo docker-squash -t nonlux/$1:latest | docker load
-docker push nonlux/$1:latest
-echo "Done"
-
-
-case "$1" in
-  debian)
-    docker-build php
-    docker-build nginx
-    docker-build mariadb
-    docker-build memcached
-    ;;
-  php)
-    docker-build symfony-dev
-    docker-build fpm
-    ;;
-  symfony-dev)
-    docker-build cgp-worker
-    docker-build bitrix
-esac
+cd  "$HOME/src/"
+echo $PWD
+docker build -t nonlux/$1:big -f ansible/docker/$1/Dockerfile .

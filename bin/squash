@@ -1,0 +1,4 @@
+#/bin/bash
+ID=$(docker inspect  --format '{{ .Id }}' nonlux/$1:big)
+ sudo /home/nonlux/.local/bin/docker-squash  -t "nonlux/$1:squashed"  nonlux/$1:big
+docker images
