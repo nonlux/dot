@@ -1,36 +1,41 @@
 #!/bin/bash
 sudo pwd
+
+# while getopts ":abc" opt
+# do
+# case $opt in
+# a) echo "Found option $opt";;
+# b) echo "Found option $opt";;
+# c) echo "Found option $opt";;
+# *) echo "Found option $opt";;
+# esac
+# done
+
 echo "Build nonlux/$1:latest image"
 echo "Stop all containers"
-docker stop $(docker ps -a -q) >> /dev/null
-docker rm $(docker ps -a -q) >> /dev/null
+docker kill $(docker ps -aq) 
+docker rm $(docker ps -aq)
 docker rmi  -f nonlux/$1:latest
 set -e
 #cd  "/home/nonlux/src/docker/$1"
 
-cd  "$HOME/src/"
+cd  "$HOME/src/docker/$1"
 echo $PWD
-docker build -t nonlux/$1:big -f ansible/docker/$1/Dockerfile .
+docker build -t nonlux/$1:big .
 echo "Flatten"
 ID=$(docker inspect  --format '{{ .Id }}' nonlux/$1:big)
-docker save $ID | sudo /home/nonlux/.local/bin/docker-squash -t="nonlux/$1:latest" nonlux/$1:big| docker load
-docker images
-#docker push nonlux/$1:latest
+docker save $ID |
+sudo /home/nonlux/.local/bin/docker-squash -t="nonlux/$1:latest" nonlux/$1:big
+docker images | grep  $1
+# docker push nonlux/$1:latest
 echo "Done"
 
 
 case "$1" in
-  debian)
-    docker-build php
-    docker-build nginx
-    docker-build mariadb
-    docker-build memcached
+  s6)
+    docker-build-flat nginx
     ;;
-  php)
-    docker-build symfony-dev
-    docker-build fpm
+  nginx)
+    docker-build-flat nginx-proxy
     ;;
-  symfony-dev)
-    docker-build cgp-worker
-    docker-build bitrix
 esac
