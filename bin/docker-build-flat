@@ -13,7 +13,6 @@ sudo pwd
 
 echo "Build nonlux/$1:latest image"
 echo "Stop all containers"
-docker kill $(docker ps -aq) 
 docker rm $(docker ps -aq)
 docker rmi  -f nonlux/$1:latest
 set -e

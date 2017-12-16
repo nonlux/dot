@@ -34,7 +34,7 @@ antigen theme agnoster
 antigen apply
 
 export ZSH_INIT=1
-export EDITOR="emacs -nw"
+export EDITOR="vim"
 export GOPATH=$HOME
 export TERM=xterm-256color
 
@@ -68,22 +68,22 @@ eval "$(hub alias -s)"
 #git
 alias grc="git rebase --continue"
 alias gra="git rebase --abort"
-alias gcf="git checkout -- "
+alias gcf="SKIP_GCO=1 git checkout -- "
 alias grh="git reset HEAD "
 alias gcb="git checkout -b"
 alias gu="git rm --cached -r "
 alias gpo="git pull -u origin master"
+alias gcos="SKIP_GCO=1 git checkout"
 
 #tmux
 alias tmux="TERM=screen-256color-bce tmux"
-alias tmx="tmuxinator"
-alias tmn="tmuxinator new"
+alias tx="tmuxinator start"
 
 function tmks() {
  tmux kill-session
 }
 
-alias tmk="tmux display-message -p '#S' | xargs tmuxinator stop"
+alias txk="tmux display-message -p '#S' | xargs tmuxinator stop"
 
 
 #docker
@@ -115,9 +115,9 @@ alias emacsi="EMACS_INSTALL=1 emacs -nw"
 
 function yp() { 
 if ! [ $1 ]; then
-    yo prj
+    yo nlx-package
 else
-    yo prj:$@
+    yo npl-package:$@
 fi
 }
 
