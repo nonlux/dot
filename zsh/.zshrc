@@ -14,10 +14,6 @@ antigen bundles <<EOBUNDLES
     zsh-users/zsh-completions
     zsh-users/zsh-autosuggestions
     bgnotify
-    bower
-    catimg
-    colored-man-pages
-    colorize
     command-not-found
     common-aliases
     composer
@@ -28,7 +24,6 @@ antigen bundles <<EOBUNDLES
     extract
     git
     git-extras
-    jira
 EOBUNDLES
 antigen theme agnoster
 antigen apply
@@ -38,10 +33,6 @@ export EDITOR="vim"
 export GOPATH=$HOME
 export TERM=xterm-256color
 
-#auto start xorg
-if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
-startx
-fi
 # COMPLETION SETTINGS
 # add custom completion scripts
 
@@ -53,27 +44,14 @@ fi
 # system aliases
 alias pacman="sudo pacman -Sy && sudo pacman "
 alias ssh-pub-key="cat $HOME/.ssh/id_rsa.pub"
-alias ccat='colorize_via_pygmentize'
-
-function commit_and_exit() {
-cd $1
-(gst  && ga . && gc -m "fast commit" && gp) || echo "foo" && cd .. && ls -l
-}
-
-
-alias src_status="cd ~/src && find . -mindepth 1 -maxdepth 1 -type d | xargs -n 1 enter_and_status"
-# hub as git
-eval "$(hub alias -s)"
 
 #git
 alias grc="git rebase --continue"
 alias gra="git rebase --abort"
-alias gcf="SKIP_GCO=1 git checkout -- "
 alias grh="git reset HEAD "
 alias gcb="git checkout -b"
 alias gu="git rm --cached -r "
 alias gpo="git pull -u origin master"
-alias gcos="SKIP_GCO=1 git checkout"
 
 #tmux
 alias tmux="TERM=screen-256color-bce tmux"
@@ -107,31 +85,5 @@ docker exec -ti $1 /bin/bash
 
 #ansible
 alias ansl="ansible-playbook -c local -i ./hosts "
-
-#emacs
-alias emacs="emacs -nw"
-alias emacsi="EMACS_INSTALL=1 emacs -nw"
-
-
-function yp() { 
-if ! [ $1 ]; then
-    yo nlx-package
-else
-    yo npl-package:$@
-fi
-}
-
-function npm-proxy-on() {
-npm config set proxy http://localhost:8080/ 
-npm config set https-proxy http://localhost:8080/ 
-npm config set strict-ssl false
-}
-function npm-proxy-off() {
-npm config rm proxy
-npm config rm https-proxy
-npm config set strict-ssl true
-}
-
-alias npmp="npm-proxy-off && npm publish && npm-proxy-on"
 
 unalias gm
