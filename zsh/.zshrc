@@ -5,7 +5,10 @@ export PATH="$HOME/.local/bin:$HOME/.npm-global/bin:$HOME/src/dot/bin:$HOME/.gem
 
 #alias compinit="echo  compinit"
 #
-source $ZSH_VENDOR/antigen/antigen.zsh
+#
+source /usr/share/zsh/share/antigen.zsh
+
+#source $ZSH_VENDOR/antigen/antigen.zsh
 fpath=($ZSH_ROOT/completion $fpath)
 skip_global_compinit=1
 antigen use oh-my-zsh
