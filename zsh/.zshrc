@@ -1,7 +1,7 @@
 # ZSH variables
 export ZSH_ROOT="$HOME/src/dot/zsh"
 export ZSH_VENDOR="$ZSH_ROOT/vendor"
-export PATH="$HOME/.local/bin:$HOME/.npm-global/bin:$HOME/src/dot/bin:$HOME/.gem/ruby/2.2.0/bin:$HOME/.gem/ruby/2.3.0/bin:$HOME/bin:$PATH"
+export PATH="$HOME/.gem/ruby/2.5.0/bin:$HOME/.local/bin:$HOME/.npm/bin:$HOME/src/dot/bin:$HOME/.gem/ruby/2.2.0/bin:$HOME/.gem/ruby/2.3.0/bin:$HOME/bin:$PATH"
 
 #alias compinit="echo  compinit"
 #
@@ -22,13 +22,15 @@ antigen bundles <<EOBUNDLES
     composer
     cp
     docker
-    docker-compose 
+    docker-compose
     encode64
     extract
     git
     git-extras
 EOBUNDLES
 antigen theme agnoster
+# export PS1='$(task +in +PENDING count) \ue0b0'$PS1
+
 antigen apply
 
 export ZSH_INIT=1
@@ -90,3 +92,6 @@ docker exec -ti $1 /bin/bash
 alias ansl="ansible-playbook -c local -i ./hosts "
 
 unalias gm
+
+alias ta="task add +inbox"
+alias tp="task modify -inbox"
