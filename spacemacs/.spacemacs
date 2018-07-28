@@ -31,12 +31,8 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
-     ;; ----------------------------------------------------------------
-     ;; Example of useful layers you may want to use right away.
-     ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
-     ;; <M-m f e R> (Emacs style) to install them.
-     ;; ----------------------------------------------------------------
-     ;; slack
+     typescript
+     lua
      helm
      (auto-completion :variables
                       auto-completion-enable-sort-by-usage t
@@ -53,17 +49,11 @@ values."
      sql
      yaml
      react
-     ;; (perspectives :variables
-     ;;               perspective-enable-persp-projectile t)
      docker
      (org :location built-in)
      syntax-checking
-     ;; (shell :variables
-     ;;        shell-default-height 30
-     ;;        shell-default-position 'bottom)
-     ;; spell-checking
-     ;; version-control
      go
+     (org :location built-in :variables org-projectile-file "notes.org")
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -133,8 +123,11 @@ values."
    ;; `recents' `bookmarks' `projects' `agenda' `todos'."
    ;; List sizes may be nil, in which case
    ;; `spacemacs-buffer-startup-lists-length' takes effect.
-   dotspacemacs-startup-lists '((recents . 5)
-                                (projects . 7))
+   dotspacemacs-startup-lists '(
+                                (recents . 4)
+                                (projects . 4)
+                                (todos . 5)
+                                (agenda . 2))
    ;; True if the home buffer should respond to resize events.
    dotspacemacs-startup-buffer-responsive t
    ;; Default major mode of the scratch buffer (default `text-mode')
@@ -275,7 +268,7 @@ values."
    ;;                       text-mode
    ;;   :size-limit-kb 1000)
    ;; (default nil)
-   dotspacemacs-line-numbers nil
+   dotspacemacs-line-numbers t
    ;; Code folding method. Possible values are `evil' and `origami'.
    ;; (default 'evil)
    dotspacemacs-folding-method 'evil
@@ -359,7 +352,27 @@ you should place your code here."
   (projectile-discover-projects-in-directory "~/src")
   )
 
+(with-eval-after-load 'org
+  ;; here goes your Org config :)
+  ;; ....
+  (setq org-agenda-files (list
+                          "~/org/notes.org"))
+  (setq org-agenda-custom-commands
+        '(
+          ("n" todo "NEXT")
+          ))
+  ;; (with-eval-after-load 'org-agenda
+  ;;   (require 'org-projectile)
+  ;;   (push (org-projectile:todo-files) org-agenda-files))
 
+  (with-eval-after-load 'org-agenda
+    (require 'org-projectile)
+    (mapcar '(lambda (file)
+               (when (file-exists-p file)
+                 (push file org-agenda-files)))
+            (org-projectile-todo-files)))
+  (setq spaceline-org-clock-p t)
+  )
 
 
 

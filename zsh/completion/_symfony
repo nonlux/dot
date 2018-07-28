@@ -1,2 +1,0 @@
-#compdef symfony
-_arguments "1:Command:(about demo help list new self-update selfupdate)"

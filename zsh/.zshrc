@@ -1,49 +1,55 @@
-# ZSH variables
-export ZSH_ROOT="$HOME/src/dot/zsh"
-export ZSH_VENDOR="$ZSH_ROOT/vendor"
-export PATH="$HOME/.gem/ruby/2.5.0/bin:$HOME/.local/bin:$HOME/.npm/bin:$HOME/src/dot/bin:$HOME/.gem/ruby/2.2.0/bin:$HOME/.gem/ruby/2.3.0/bin:$HOME/bin:$PATH"
+# If you come from bash you might have to change your $PATH.
+  export PATH="$HOME/.gem/ruby/2.5.0/bin:$HOME/.local/bin:$HOME/.npm/bin:$HOME/src/dot/bin:$HOME/.gem/ruby/2.2.0/bin:$HOME/.gem/ruby/2.3.0/bin:$HOME/bin:$PATH"
 
-#alias compinit="echo  compinit"
-#
-#
-source /usr/share/zsh/share/antigen.zsh
+# Path to your oh-my-zsh installation.
+export ZSH="/home/nonlux/.oh-my-zsh"
 
-#source $ZSH_VENDOR/antigen/antigen.zsh
-fpath=($ZSH_ROOT/completion $fpath)
-skip_global_compinit=1
-antigen use oh-my-zsh
-antigen bundles <<EOBUNDLES
-    zsh-users/zsh-syntax-highlighting
-    zsh-users/zsh-completions
-    zsh-users/zsh-autosuggestions
-    bgnotify
-    command-not-found
-    common-aliases
-    composer
-    cp
-    docker
-    docker-compose
-    encode64
-    extract
-    git
-    git-extras
-EOBUNDLES
-antigen theme agnoster
-# export PS1='$(task +in +PENDING count) \ue0b0'$PS1
+# Set name of the theme to load. Optionally, if you set this to "random"
+# it'll load a random theme each time that oh-my-zsh is loaded.
+# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
+ZSH_THEME="agnoster"
 
-antigen apply
+# Uncomment the following line to disable bi-weekly auto-update checks.
+# DISABLE_AUTO_UPDATE="true"
 
-export ZSH_INIT=1
+# Uncomment the following line to change how often to auto-update (in days).
+# export UPDATE_ZSH_DAYS=13
+
+# Uncomment the following line to disable colors in ls.
+# DISABLE_LS_COLORS="true"
+
+# Uncomment the following line to disable auto-setting terminal title.
+# DISABLE_AUTO_TITLE="true"
+
+# Uncomment the following line to enable command auto-correction.
+# ENABLE_CORRECTION="true"
+
+# Uncomment the following line to display red dots whilst waiting for completion.
+# COMPLETION_WAITING_DOTS="true"
+
+# Uncomment the following line if you want to disable marking untracked files
+# under VCS as dirty. This makes repository status check for large repositories
+# much, much faster.
+# DISABLE_UNTRACKED_FILES_DIRTY="true"
+
+
+
+# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
+# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+plugins=(
+  git
+  extract
+  bgnotify
+)
+
+source $ZSH/oh-my-zsh.sh
+
+export LANG=en_US.UTF-8
 export EDITOR="vim"
 export GOPATH=$HOME
 export TERM=xterm-256color
-
-# COMPLETION SETTINGS
-# add custom completion scripts
-
-# compsys initialization
-#autoload -U compinit
-#compinit
 
 
 # system aliases
@@ -62,36 +68,23 @@ alias gpo="git pull -u origin master"
 alias tmux="TERM=screen-256color-bce tmux"
 alias tx="tmuxinator start"
 
-function tmks() {
- tmux kill-session
-}
-
-alias txk="tmux display-message -p '#S' | xargs tmuxinator stop"
-
-
 #docker
 #alias docker-compose="docker run -v \"\$(pwd)\":/app  -v \"\$(pwd):\$(pwd)\" -w \"\$(pwd)\" -v /var/run/docker.sock:/var/run/docker.sock -e COMPOSE_PROJECT_NAME=\$(basename \"\$(pwd)\") -ti --rm dduportal/docker-compose:latest"
 alias dip="docker inspect --format '{{ .NetworkSettings.IPAddress }}'"
 alias dockviz="docker run -it --rm -v /var/run/docker.sock:/var/run/docker.sock nate/dockviz"
 
 function drun() {
-user="user"
-if [ $2 ]
-then
-  user=$2
-fi
-echo $user
-docker run -v $(pwd):/app  -u $user -ti $1 /bin/bash
+    user="user"
+    if [ $2 ]
+    then
+        user=$2
+    fi
+    echo $user
+    docker run -v $(pwd):/app  -u $user -ti $1 /bin/bash
 }
 
 function dent() {
-docker exec -ti $1 /bin/bash
+    docker exec -ti $1 /bin/bash
 }
 
-#ansible
-alias ansl="ansible-playbook -c local -i ./hosts "
-
 unalias gm
-
-alias ta="task add +inbox"
-alias tp="task modify -inbox"
