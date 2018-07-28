@@ -53,7 +53,9 @@ export TERM=xterm-256color
 
 
 # system aliases
+# don't forget sudo for pacman
 alias pacman="sudo pacman -Sy && sudo pacman "
+# show my public key
 alias ssh-pub-key="cat $HOME/.ssh/id_rsa.pub"
 
 #git
@@ -69,7 +71,6 @@ alias tmux="TERM=screen-256color-bce tmux"
 alias tx="tmuxinator start"
 
 #docker
-#alias docker-compose="docker run -v \"\$(pwd)\":/app  -v \"\$(pwd):\$(pwd)\" -w \"\$(pwd)\" -v /var/run/docker.sock:/var/run/docker.sock -e COMPOSE_PROJECT_NAME=\$(basename \"\$(pwd)\") -ti --rm dduportal/docker-compose:latest"
 alias dip="docker inspect --format '{{ .NetworkSettings.IPAddress }}'"
 alias dockviz="docker run -it --rm -v /var/run/docker.sock:/var/run/docker.sock nate/dockviz"
 

@@ -1,8 +1,0 @@
-name: dot
-root: /home/nonlux/src/dot
-pre: emacs --eval "(setq server-name \"dot\")" --daemon
-startup_window: editor
-windows:
-  - none: ''
-  - editor: emacsclient -s dot ./
-  - zsh: ''
