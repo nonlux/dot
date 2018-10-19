@@ -1,7 +1,6 @@
 ;; -*- mode: emacs-lisp -*-
 ;; This file is loaded by Spacemacs at startup.
 ;; It must be stored in your home directory.
-
 (defun dotspacemacs/layers ()
   "Layer configuration:
 This function should only modify configuration layer settings."
@@ -54,6 +53,7 @@ This function should only modify configuration layer settings."
      go
      (org :location built-in :variables org-projectile-file "notes.org")
      neotree
+     scala
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -341,6 +341,8 @@ executes.
  This function is mostly useful for variables that need to be set
 before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
+  (server-start)
+  (require 'org-protocol)
   )
 
 
@@ -401,13 +403,33 @@ you should place your code here."
   )
 
 (with-eval-after-load 'org
+  (add-to-list 'org-modules 'org-protocol)
   ;; here goes your Org config :)
   ;; ....
   (setq org-agenda-files (list
                           "~/Dropbox/notes.org"))
   (setq org-agenda-custom-commands
         '(
-          ("n" todo "NEXT")
+          ("n" "next" tags "-ab/NEXT")
+          ("t" "todo" todo "TODO")
+          ("o" "org" todo "ORG")
+          ("b" "blocked" todo "BLOCKED")
+          ;; ("p" "projects")
+          ("pa" "ab" tags "ab/NEXT")
+          ;; ("c" "calendar")
+          ("cw" "week" agenda "" )
+          ("cn" "today" agenda ""
+           ((org-agenda-start-day "+0d")
+            (org-agenda-span 1)))
+          ("ct" "tomorrow" agenda ""
+           ((org-agenda-start-day "+1d")
+            (org-agenda-span 1)))
+          ("cs" "8 days" agenda ""
+           ((org-agenda-start-day "+0d")
+            (org-agenda-span 8)))
+          ("cg" "30 days" agenda ""
+           ((org-agenda-start-day "+0d")
+            (org-agenda-span 30)))
           ))
   ;; (with-eval-after-load 'org-agenda
   ;;   (require 'org-projectile)
@@ -415,22 +437,51 @@ you should place your code here."
 
   (with-eval-after-load 'org-agenda
     (require 'org-projectile)
-    (mapcar '(lambda (file)
-               (when (file-exists-p file)
-                 (push file org-agenda-files)))
-            (org-projectile-todo-files)))
+    ;; (mapcar '(lambda (file)
+    ;;            (when (file-exists-p file)
+    ;;              (push file org-agenda-files)))
+    ;;         (org-projectile-todo-files))
+    )
   (setq spaceline-org-clock-p t)
   )
+;; (server-start)
+
+;; (require 'org-protocol)
 
 (setq org-todo-keywords
-      '((sequence "TODO(t)" "NEXT(n)" "WAITING(w)" "|" "DONE(d)")
-        (sequence "|" "CANCELED(c)")))
+      '(
+        (sequence "TODO(t)"
+                  "NEXT(n)"
+                  "PRJ(p)"
+                  "WAITING(w)"
+                  "BLOCKED(b)"
+                  "SOMETIME(s)"
+                  "SCH(h)"
+                  "BUY(y)"
+                  "ORG(o)"
+                  "|" "DONE(d)")
+        (sequence "|" "CANCELED(c)")
+        ))
 (setq org-want-todo-bindings t)
 (setq org-todo-keyword-faces
       '(
         ("NEXT" . "yellow")
         ("WAITING" . "gray")
          ))
+
+(setq org-capture-templates
+      (quote (
+               ;; ("l" "org-protocol" entry (file "~/Dropbox/links.org"))
+               ("t" "todo" entry (file "~/Dropbox/notes.org")
+                "*** TODO %?\n%U\n%a\n" :clock-in t :clock-resume t)
+               ("p" "Protocol" entry (file+headline "~/org/notes.org" "Inbox")
+                "* %^{Title}\nSource: %u, %c\n #+BEGIN_QUOTE\n%i\n#+END_QUOTE\n\n\n%?")
+               ("l" "Protocol Link" entry (file+headline "~/org/notes.org" "Inbox")
+                "* %? [[%:link][%:description]] \nCaptured On: %U")
+               ("L" "Protocol Link" entry (file+headline "~/org/notes.org" "Inbox")
+                "* %? [[%:link][%:description]] \nCaptured On: %U")
+              )))
+      (setq org-protocol-default-template-key "l")
 
 
 ;; Do not write anything past this comment. This is where Emacs will
@@ -461,7 +512,7 @@ This function is called at the very end of Spacemacs initialization."
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (ac-ispell yaml-mode web-mode web-beautify unfill tide typescript-mode tagedit sql-indent smeargle slim-mode scss-mode sass-mode pug-mode phpunit phpcbf php-extras php-auto-yasnippets orgit org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-mime org-download mwim mmm-mode markdown-toc markdown-mode magit-gitflow lua-mode livid-mode skewer-mode simple-httpd js2-refactor multiple-cursors js2-mode js-doc insert-shebang htmlize helm-gitignore helm-css-scss helm-company helm-c-yasnippet haml-mode go-guru go-eldoc gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md fuzzy flycheck-pos-tip flycheck fish-mode evil-magit magit git-commit ghub with-editor emmet-mode drupal-mode php-mode dockerfile-mode docker json-mode tablist magit-popup docker-tramp json-snatcher json-reformat company-web web-completion-data company-tern dash-functional tern company-statistics company-shell company-quickhelp pos-tip company-go go-mode company coffee-mode auto-yasnippet yasnippet auto-complete ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint indent-guide hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu elisp-slime-nav dumb-jump diminish define-word column-enforce-mode clean-aindent-mode auto-highlight-symbol auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line))))
+    (noflet mvn meghanada maven-test-mode groovy-mode groovy-imports pcache gradle-mode ensime sbt-mode scala-mode company-emacs-eclim eclim yaml-mode web-mode web-beautify unfill tide typescript-mode tagedit sql-indent smeargle slim-mode scss-mode sass-mode pug-mode phpunit phpcbf php-extras php-auto-yasnippets orgit org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-mime org-download mwim mmm-mode markdown-toc markdown-mode magit-gitflow lua-mode livid-mode skewer-mode simple-httpd js2-refactor multiple-cursors js2-mode js-doc insert-shebang htmlize helm-gitignore helm-css-scss helm-company helm-c-yasnippet haml-mode go-guru go-eldoc gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md fuzzy flycheck-pos-tip flycheck fish-mode evil-magit magit git-commit ghub with-editor emmet-mode drupal-mode php-mode dockerfile-mode docker json-mode tablist magit-popup docker-tramp json-snatcher json-reformat company-web web-completion-data company-tern dash-functional tern company-statistics company-shell company-quickhelp pos-tip company-go go-mode company coffee-mode auto-yasnippet yasnippet auto-complete ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint indent-guide hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu elisp-slime-nav dumb-jump diminish define-word column-enforce-mode clean-aindent-mode auto-highlight-symbol auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
