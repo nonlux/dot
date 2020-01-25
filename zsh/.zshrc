@@ -1,5 +1,5 @@
 # If you come from bash you might have to change your $PATH.
-  export PATH="$HOME/.gem/ruby/2.5.0/bin:$HOME/.local/bin:$HOME/.npm/bin:$HOME/src/dot/bin:$HOME/.gem/ruby/2.2.0/bin:$HOME/.gem/ruby/2.3.0/bin:$HOME/bin:$PATH"
+  export PATH="$HOME/.gem/ruby/2.5.0/bin:$HOME/.local/bin:$HOME/.npm/bin:$HOME/src/dot/bin:$HOME/.gem/ruby/2.2.0/bin:$HOME/.gem/ruby/2.3.0/bin:$HOME/bin:$HOME/.cargo/bin:$PATH"
 
 # Path to your oh-my-zsh installation.
 export ZSH="/home/nonlux/.oh-my-zsh"
@@ -50,6 +50,14 @@ export LANG=en_US.UTF-8
 export EDITOR="vim"
 export GOPATH=$HOME
 export TERM=xterm-256color
+export GOPATH=~/src/go-workspace
+export PATH=$PATH:$GOROOT/bin
+export PATH=$PATH:$GOPATH/bin
+export PATH=$PATH:$HOME/.cabal/bin
+export PATH=$HOME/.ghcup/bin:$PATH
+export GOPRIVATE=git.nonlux.ru
+
+GO111MODULE=auto
 
 
 # system aliases
@@ -89,3 +97,6 @@ function dent() {
 }
 
 unalias gm
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+export GITLAB_TOKEN="2jJEH8tPjjfFxSCYzvDL"
